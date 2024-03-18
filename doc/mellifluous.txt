@@ -1,0 +1,227 @@
+*mellifluous.txt*                          Pleasant and productive colorscheme
+
+==============================================================================
+Table of Contents                              *mellifluous-table-of-contents*
+
+1. Styled plugins                                 |mellifluous-styled-plugins|
+2. Installation and usage                 |mellifluous-installation-and-usage|
+3. Configuration                                   |mellifluous-configuration|
+  - Setting light theme        |mellifluous-configuration-setting-light-theme|
+  - Color sets                          |mellifluous-configuration-color-sets|
+4. CLI options                                       |mellifluous-cli-options|
+5. TODO                                                     |mellifluous-todo|
+6. Ports                                                   |mellifluous-ports|
+7. Inspiration                                       |mellifluous-inspiration|
+
+==============================================================================
+1. Styled plugins                                 *mellifluous-styled-plugins*
+
+- Treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
+- Native LSP <https://github.com/neovim/nvim-lspconfig>
+- Telescope <https://github.com/nvim-telescope/telescope.nvim>
+- NvimTree <https://github.com/kyazdani42/nvim-tree.lua>
+- Neo-Tree <https://github.com/nvim-neo-tree/neo-tree.nvim>
+- Nvim-cmp <https://github.com/hrsh7th/nvim-cmp>
+- Indent Blankline <https://github.com/lukas-reineke/indent-blankline.nvim>
+- Startify <https://github.com/mhinz/vim-startify>
+- Gitsigns <https://github.com/lewis6991/gitsigns.nvim>
+
+
+==============================================================================
+2. Installation and usage                 *mellifluous-installation-and-usage*
+
+Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
+
+>lua
+    use({
+        'ramojus/mellifluous.nvim',
+        config = function()
+            require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
+            vim.cmd('colorscheme mellifluous')
+        end,
+    })
+<
+
+
+==============================================================================
+3. Configuration                                   *mellifluous-configuration*
+
+Here is an example with the default config. This is optional, and only relevant
+parts of the config can be included.
+
+>lua
+    require 'mellifluous'.setup({
+        dim_inactive = false,
+        color_set = 'mellifluous',
+        styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
+            comments = { italic = true },
+            conditionals = {},
+            folds = {},
+            loops = {},
+            functions = {},
+            keywords = {},
+            strings = {},
+            variables = {},
+            numbers = {},
+            booleans = {},
+            properties = {},
+            types = {},
+            operators = {},
+        },
+        transparent_background = {
+            enabled = false,
+            floating_windows = true,
+            telescope = true,
+            file_tree = true,
+            cursor_line = true,
+            status_line = false,
+        },
+        flat_background = {
+            line_numbers = false,
+            floating_windows = false,
+            file_tree = false,
+            cursor_line_number = false,
+        },
+        plugins = {
+            cmp = true,
+            gitsigns = true,
+            indent_blankline = true,
+            nvim_tree = {
+                enabled = true,
+                show_root = false,
+            },
+            neo_tree = {
+                enabled = true,
+            },
+            telescope = {
+                enabled = true,
+                nvchad_like = true,
+            },
+            startify = true,
+        },
+    })
+<
+
+
+SETTING LIGHT THEME            *mellifluous-configuration-setting-light-theme*
+
+Set `vim.opt.background` to `'light'`. This will only work on color sets that
+have light theme.
+
+
+COLOR SETS                              *mellifluous-configuration-color-sets*
+
+Non-original color sets are made to match their original version as closely as
+possible with the same highlight rules as mellifluous.
+
+These color sets don’t get loaded, unless you specify them in a `color_set`
+option, so there is no performance impact.
+
+Available color sets: - `mellifluous`. Dark and light, original. - `alduin`.
+Dark, link to original <https://github.com/alessandroyorba/alduin>. -
+`mountain`. Dark, link to original
+<https://github.com/mountain-theme/mountain>. - `tender`. Dark, link to
+original <https://github.com/jacoborus/tender.vim>.
+
+
+MELLIFLUOUS COLOR SET CONFIGURATION ~
+
+Default config:
+
+>lua
+    require 'mellifluous'.setup({
+        mellifluous = {
+            neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+            bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+        }
+    })
+<
+
+
+OVERRIDING COLORS OF A COLOR SET ~
+
+The following snipet shows where and which colors can be overridden:
+
+>lua
+    require 'mellifluous'.setup({
+        <color_set_name> = { -- name any of the defined color sets
+            color_overrides = {
+                dark = { -- dark variant of the color set
+                    bg = nil, -- used for shades, on some color sets fg will be derived from this
+                    fg = nil, -- used for shades if shades_fg is undefined
+                    shades_fg = nil, -- used for shades (dimmed foregrounds)
+    
+                    main_keywords = nil,
+                    other_keywords = nil,
+                    types = nil,
+                    operators = nil,
+                    strings = nil,
+                    functions = nil,
+                    constants = nil,
+                    comments = nil,
+    
+                    red = nil, -- errors, deletes, bad spellings
+                    orange = nil, -- warnings, changes, unusual spellings
+                    green = nil, -- staged, additions
+                    blue = nil, -- information, new files
+                    purple = nil, -- hints, merge
+    
+                    -- for better terminal highlights
+                    yellow = nil,
+                    cyan = nil,
+                },
+                light = { -- light variant of the color set
+                    -- same fields as in dark variant
+                },
+            }
+        }
+    })
+<
+
+For example, to override a color for the main keywords group in the dark
+version of the mellifluous color set, one could do the following:
+
+>lua
+    require 'mellifluous'.setup({
+        mellifluous = {
+            color_overrides = {
+                dark = {
+                    main_keywords = '#e0e066'
+                }
+            }
+        }
+    })
+<
+
+
+==============================================================================
+4. CLI options                                       *mellifluous-cli-options*
+
+Type `:Mellifluous <TAB>` and see the available options.
+
+Options include: - Toggling transparency. - Changing color set.
+
+
+==============================================================================
+5. TODO                                                     *mellifluous-todo*
+
+- ☐ Support more plugins (contributions are welcome).
+
+
+==============================================================================
+6. Ports                                                   *mellifluous-ports*
+
+- Helix (with slightly outdated color palette) <https://github.com/helix-editor/helix/wiki/Themes#meliora>
+
+
+==============================================================================
+7. Inspiration                                       *mellifluous-inspiration*
+
+- Mountain and Mountaineer <https://github.com/mountain-theme/mountain>
+- Alduin <https://github.com/alessandroyorba/alduin>
+- Melange <https://github.com/savq/melange>
+- Sema <https://github.com/arzg/sema>
+
+Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
+
+vim:tw=78:ts=8:noet:ft=help:norl:

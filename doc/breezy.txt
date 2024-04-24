@@ -1,20 +1,20 @@
-*mellifluous.txt*                          Pleasant and productive colorscheme
+*breezy.txt*                          Pleasant and productive colorscheme
 
 ==============================================================================
-Table of Contents                              *mellifluous-table-of-contents*
+Table of Contents                              *breezy-table-of-contents*
 
-1. Styled plugins                                 |mellifluous-styled-plugins|
-2. Installation and usage                 |mellifluous-installation-and-usage|
-3. Configuration                                   |mellifluous-configuration|
-  - Setting light theme        |mellifluous-configuration-setting-light-theme|
-  - Color sets                          |mellifluous-configuration-color-sets|
-4. CLI options                                       |mellifluous-cli-options|
-5. TODO                                                     |mellifluous-todo|
-6. Ports                                                   |mellifluous-ports|
-7. Inspiration                                       |mellifluous-inspiration|
+1. Styled plugins                                 |breezy-styled-plugins|
+2. Installation and usage                 |breezy-installation-and-usage|
+3. Configuration                                   |breezy-configuration|
+  - Setting light theme        |breezy-configuration-setting-light-theme|
+  - Color sets                          |breezy-configuration-color-sets|
+4. CLI options                                       |breezy-cli-options|
+5. TODO                                                     |breezy-todo|
+6. Ports                                                   |breezy-ports|
+7. Inspiration                                       |breezy-inspiration|
 
 ==============================================================================
-1. Styled plugins                                 *mellifluous-styled-plugins*
+1. Styled plugins                                 *breezy-styled-plugins*
 
 - Treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
 - Native LSP <https://github.com/neovim/nvim-lspconfig>
@@ -28,31 +28,31 @@ Table of Contents                              *mellifluous-table-of-contents*
 
 
 ==============================================================================
-2. Installation and usage                 *mellifluous-installation-and-usage*
+2. Installation and usage                 *breezy-installation-and-usage*
 
 Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 
 >lua
     use({
-        'ramojus/mellifluous.nvim',
+        'ramojus/breezy.nvim',
         config = function()
-            require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
-            vim.cmd('colorscheme mellifluous')
+            require'breezy'.setup({ --[[...]] }) -- optional, see configuration section.
+            vim.cmd('colorscheme breezy')
         end,
     })
 <
 
 
 ==============================================================================
-3. Configuration                                   *mellifluous-configuration*
+3. Configuration                                   *breezy-configuration*
 
 Here is an example with the default config. This is optional, and only relevant
 parts of the config can be included.
 
 >lua
-    require 'mellifluous'.setup({
+    require 'breezy'.setup({
         dim_inactive = false,
-        color_set = 'mellifluous',
+        color_set = 'breezy',
         styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
             comments = { italic = true },
             conditionals = {},
@@ -103,35 +103,35 @@ parts of the config can be included.
 <
 
 
-SETTING LIGHT THEME            *mellifluous-configuration-setting-light-theme*
+SETTING LIGHT THEME            *breezy-configuration-setting-light-theme*
 
 Set `vim.opt.background` to `'light'`. This will only work on color sets that
 have light theme.
 
 
-COLOR SETS                              *mellifluous-configuration-color-sets*
+COLOR SETS                              *breezy-configuration-color-sets*
 
 Non-original color sets are made to match their original version as closely as
-possible with the same highlight rules as mellifluous.
+possible with the same highlight rules as breezy.
 
 These color sets don’t get loaded, unless you specify them in a `color_set`
 option, so there is no performance impact.
 
-Available color sets: - `mellifluous`. Dark and light, original. - `alduin`.
+Available color sets: - `breezy`. Dark and light, original. - `alduin`.
 Dark, link to original <https://github.com/alessandroyorba/alduin>. -
 `mountain`. Dark, link to original
 <https://github.com/mountain-theme/mountain>. - `tender`. Dark, link to
 original <https://github.com/jacoborus/tender.vim>.
 
 
-MELLIFLUOUS COLOR SET CONFIGURATION ~
+breezy COLOR SET CONFIGURATION ~
 
 Default config:
 
 >lua
-    require 'mellifluous'.setup({
-        mellifluous = {
-            neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+    require 'breezy'.setup({
+        breezy = {
+            neutral = true, -- set this to false and bg_contrast to 'medium' for original breezy (then it was called meliora theme)
             bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
         }
     })
@@ -143,7 +143,7 @@ OVERRIDING COLORS OF A COLOR SET ~
 The following snipet shows where and which colors can be overridden:
 
 >lua
-    require 'mellifluous'.setup({
+    require 'breezy'.setup({
         <color_set_name> = { -- name any of the defined color sets
             color_overrides = {
                 dark = { -- dark variant of the color set
@@ -179,11 +179,11 @@ The following snipet shows where and which colors can be overridden:
 <
 
 For example, to override a color for the main keywords group in the dark
-version of the mellifluous color set, one could do the following:
+version of the breezy color set, one could do the following:
 
 >lua
-    require 'mellifluous'.setup({
-        mellifluous = {
+    require 'breezy'.setup({
+        breezy = {
             color_overrides = {
                 dark = {
                     main_keywords = '#e0e066'
@@ -195,27 +195,27 @@ version of the mellifluous color set, one could do the following:
 
 
 ==============================================================================
-4. CLI options                                       *mellifluous-cli-options*
+4. CLI options                                       *breezy-cli-options*
 
-Type `:Mellifluous <TAB>` and see the available options.
+Type `:breezy <TAB>` and see the available options.
 
 Options include: - Toggling transparency. - Changing color set.
 
 
 ==============================================================================
-5. TODO                                                     *mellifluous-todo*
+5. TODO                                                     *breezy-todo*
 
 - ☐ Support more plugins (contributions are welcome).
 
 
 ==============================================================================
-6. Ports                                                   *mellifluous-ports*
+6. Ports                                                   *breezy-ports*
 
 - Helix (with slightly outdated color palette) <https://github.com/helix-editor/helix/wiki/Themes#meliora>
 
 
 ==============================================================================
-7. Inspiration                                       *mellifluous-inspiration*
+7. Inspiration                                       *breezy-inspiration*
 
 - Mountain and Mountaineer <https://github.com/mountain-theme/mountain>
 - Alduin <https://github.com/alessandroyorba/alduin>

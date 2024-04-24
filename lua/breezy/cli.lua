@@ -4,27 +4,27 @@ function M.create()
     local options = {
         toggle_transparency = 100,
     }
-    local color_sets = require('mellifluous.colors').get_color_sets_table()
+    local color_sets = require('breezy.colors').get_color_sets_table()
     options = vim.tbl_deep_extend('force', options, color_sets)
-    local config = require('mellifluous.config').config
+    local config = require('breezy.config').config
 
-    vim.api.nvim_create_user_command('Mellifluous', function(input)
+    vim.api.nvim_create_user_command('Breezy', function(input)
         if options[input.args] == options.toggle_transparency then
-            require('mellifluous').setup({
+            require('breezy').setup({
                 transparent_background = {
                     enabled = not config.transparent_background.enabled
                 }
             })
         elseif color_sets[input.args] then
-            require('mellifluous').setup({
+            require('breezy').setup({
                 color_set = input.args
             })
         else
-            require('mellifluous').print_error("unrecognised cli argument: '" .. input.args .. "'")
+            require('breezy').print_error("unrecognised cli argument: '" .. input.args .. "'")
             return
         end
 
-        vim.cmd('colorscheme mellifluous')
+        vim.cmd('colorscheme breezy')
     end, {
         nargs = 1,
         complete = function(line)

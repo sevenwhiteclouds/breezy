@@ -1,9 +1,9 @@
 local M = {}
 
 function M.set(hl, colors)
-    local shader = require('mellifluous.utils.shader')
-    local shade_recipes = require('mellifluous.colors.shades').get_recipes()
-    local config = require('mellifluous.config').config
+    local shader = require('breezy.utils.shader')
+    local shade_recipes = require('breezy.colors.shades').get_recipes()
+    local config = require('breezy.config').config
 
     hl.set('Normal', {
         bg = (config.transparent_background.enabled and 'NONE')

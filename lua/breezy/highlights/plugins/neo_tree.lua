@@ -2,7 +2,7 @@ local M = {}
 
 function M.set(hl, colors)
     local root_fg = colors.fg3
-    local config = require('mellifluous.config').config
+    local config = require('breezy.config').config
 
     hl.set('NeoTreeGitConflict', { fg = colors.ui_purple })
     hl.set('NeoTreeGitDeleted', { fg = colors.red })

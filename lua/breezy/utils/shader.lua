@@ -1,10 +1,10 @@
 local M = {}
 
 function M.get_shade(recipe, target_color)
-    local config = require('mellifluous.config').config
+    local config = require('breezy.config').config
     local color
     if type(target_color) == 'string' then -- hex
-        color = require'mellifluous.color'.new(target_color)
+        color = require'breezy.color'.new(target_color)
     else
         color = target_color
     end
@@ -18,7 +18,7 @@ function M.get_shade(recipe, target_color)
     elseif recipe.action == 'with_li' then
         return color:with_lightness(val)
     else
-        require('mellifluous').return_error("unknwon shade recipe action: " .. recipe.action)
+        require('breezy').return_error("unknwon shade recipe action: " .. recipe.action)
     end
 end
 
@@ -35,8 +35,8 @@ function M.add_shades(shade_recipes, colors)
 end
 
 function M.get_lower_contrast(color, amount)
-    local config = require('mellifluous.config').config
-    color = require('mellifluous.color').ensure_correct_type(color)
+    local config = require('breezy.config').config
+    color = require('breezy.color').ensure_correct_type(color)
 
     if config.is_bg_dark then
         return color:darkened(amount)
@@ -45,8 +45,8 @@ function M.get_lower_contrast(color, amount)
 end
 
 function M.get_higher_contrast(color, amount)
-    local config = require('mellifluous.config').config
-    color = require('mellifluous.color').ensure_correct_type(color)
+    local config = require('breezy.config').config
+    color = require('breezy.color').ensure_correct_type(color)
 
     if config.is_bg_dark then
         return color:lightened(amount)

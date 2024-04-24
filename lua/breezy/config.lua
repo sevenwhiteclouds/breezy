@@ -1,7 +1,7 @@
 local M = {}
 
 local config = {
-    color_set = 'mellifluous',
+    color_set = 'breezy',
     plugins = {
         cmp = true,
         indent_blankline = true,
@@ -73,7 +73,7 @@ local function merge_color_set_defaults()
     end
     are_color_set_defaults_merged = true
 
-    local color_set = require('mellifluous.colors.sets.' .. config.color_set)
+    local color_set = require('breezy.colors.sets.' .. config.color_set)
 
     if not color_set.get_config then
         return
@@ -83,9 +83,9 @@ local function merge_color_set_defaults()
 end
 
 local function process_color_set()
-    config.is_bg_dark = require('mellifluous.colors').get_is_bg_dark(config.color_set)
+    config.is_bg_dark = require('breezy.colors').get_is_bg_dark(config.color_set)
     config.ui_color_base_lightness =
-        require('mellifluous.colors').get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
+        require('breezy.colors').get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
 
     merge_color_set_defaults()
 end
@@ -96,7 +96,7 @@ local function read_only(table)
     local metatable = {
         __index = table,
         __newindex = function()
-            require('mellifluous').return_error('Attempt to update readonly config')
+            require('breezy').return_error('Attempt to update readonly config')
         end,
     }
     setmetatable(proxy, metatable)

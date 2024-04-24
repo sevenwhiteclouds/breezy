@@ -1,7 +1,7 @@
 <!-- panvimdoc-ignore-start -->
-# Mellifluous
+# breezy
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
-![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
+![preview](https://github.com/ramojus/breezy.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
 ## Highlighted features
 - [**Multiple color sets**](#color-sets): Each color set presents a unique visual theme while adhering to the same set of productive highlight rules. Every color set [can be customised](#overriding-colors-of-a-color-set).
@@ -30,10 +30,10 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use({
-    'ramojus/mellifluous.nvim',
+    'ramojus/breezy.nvim',
     config = function()
-        require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
-        vim.cmd('colorscheme mellifluous')
+        require'breezy'.setup({ --[[...]] }) -- optional, see configuration section.
+        vim.cmd('colorscheme breezy')
     end,
 })
 ```
@@ -42,9 +42,9 @@ use({
 Here is an example with the default config. This is optional, and only relevant parts of the config can be included.
 
 ```lua
-require 'mellifluous'.setup({
+require 'breezy'.setup({
     dim_inactive = false,
-    color_set = 'mellifluous',
+    color_set = 'breezy',
     styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
         comments = { italic = true },
         conditionals = {},
@@ -98,23 +98,23 @@ require 'mellifluous'.setup({
 Set `vim.opt.background` to `'light'`. This will only work on color sets that have light theme.
 
 ### Color sets
-Non-original color sets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
+Non-original color sets are made to match their original version as closely as possible with the same highlight rules as breezy.
 
 These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
 
 Available color sets:
-- `mellifluous`. Dark and light, original.
+- `breezy`. Dark and light, original.
 - `alduin`. Dark, [link to original](https://github.com/alessandroyorba/alduin).
 - `mountain`. Dark, [link to original](https://github.com/mountain-theme/mountain).
 - `tender`. Dark, [link to original](https://github.com/jacoborus/tender.vim).
 
-#### Mellifluous color set configuration
+#### breezy color set configuration
 Default config:
 
 ```lua
-require 'mellifluous'.setup({
-    mellifluous = {
-        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+require 'breezy'.setup({
+    breezy = {
+        neutral = true, -- set this to false and bg_contrast to 'medium' for original breezy (then it was called meliora theme)
         bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
     }
 })
@@ -124,7 +124,7 @@ require 'mellifluous'.setup({
 The following snipet shows where and which colors can be overridden:
 
 ```lua
-require 'mellifluous'.setup({
+require 'breezy'.setup({
     <color_set_name> = { -- name any of the defined color sets
         color_overrides = {
             dark = { -- dark variant of the color set
@@ -159,11 +159,11 @@ require 'mellifluous'.setup({
 })
 ```
 
-For example, to override a color for the main keywords group in the dark version of the mellifluous color set, one could do the following:
+For example, to override a color for the main keywords group in the dark version of the breezy color set, one could do the following:
 
 ```lua
-require 'mellifluous'.setup({
-    mellifluous = {
+require 'breezy'.setup({
+    breezy = {
         color_overrides = {
             dark = {
                 main_keywords = '#e0e066'
@@ -174,7 +174,7 @@ require 'mellifluous'.setup({
 ```
 
 ## CLI options
-Type `:Mellifluous <TAB>` and see the available options.
+Type `:breezy <TAB>` and see the available options.
 
 Options include:
 - Toggling transparency.

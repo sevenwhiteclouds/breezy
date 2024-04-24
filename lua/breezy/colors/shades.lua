@@ -1,7 +1,7 @@
 local M = {}
 
 function M.get_recipes()
-    local config = require('mellifluous.config').config
+    local config = require('breezy.config').config
 
     local shared_recipes = {
         ui_red = { target = 'red', action = 'with_li', val = 'ui' },

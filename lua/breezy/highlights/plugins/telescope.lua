@@ -1,7 +1,7 @@
 local M = {}
 
 function M.set(hl, colors)
-    local config = require('mellifluous.config').config
+    local config = require('breezy.config').config
 
     if config.plugins.telescope.nvchad_like == true
         and not config.transparent_background.telescope

@@ -1,8 +1,8 @@
 local M = {}
 
 function M.set(hl, colors)
-    local shader = require('mellifluous.utils.shader')
-    local config = require('mellifluous.config').config
+    local shader = require('breezy.utils.shader')
+    local config = require('breezy.config').config
 
     hl.set('@attribute', { fg = colors.other_keywords })                                                   -- Annotations that can be attached to the code to denote some kind of meta information. e.g. C++/Dart attributes.
     hl.set('@boolean', { link = 'Boolean' })                                                               -- Boolean literals: `True` and `False` in Python.

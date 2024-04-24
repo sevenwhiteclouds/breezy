@@ -1,7 +1,7 @@
 local M = {}
 
 function M.set(hl, colors)
-    local config = require('mellifluous.config').config
+    local config = require('breezy.config').config
     local root_fg = colors.dark_bg
 
     if config.plugins.nvim_tree.show_root == true then
